@@ -8,6 +8,8 @@ resource "aws_launch_configuration" "web" {
   security_groups = [ aws_security_group.allow_http.id ]
   associate_public_ip_address = true
 
+  user_data           = file("install_httpd.sh")
+  
   lifecycle {
     create_before_destroy = true
   }
